@@ -8,7 +8,7 @@ class FilterBar extends React.Component {
       categories: [],
     };
   }
-  
+
   componentDidMount = () => {
     this.renderCategories();
   }
@@ -24,7 +24,7 @@ class FilterBar extends React.Component {
       categories: categoryElements,
     });
   }
-  
+
   render() {
     const { categories } = this.state;
     return (
