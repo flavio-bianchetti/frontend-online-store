@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CardProduct from '../component/CardProduct';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import FilterBar from '../component/FilterBar';
 
 class Home extends React.Component {
   constructor() {
@@ -68,13 +69,13 @@ class Home extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-
+        <div>
+          <FilterBar />
+        </div>
         { products.length > 0 && this.renderProductList() }
-
         <Link to="/shoppingcart" data-testid="shopping-cart-button">
           <button type="button">Carrinho</button>
         </Link>
-
       </div>
     );
   }
