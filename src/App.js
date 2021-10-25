@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
   return (
     <BrowserRouter>
-      <Route exact path="/" component={ Home } />
+      <Switch>
+        <Route exact path="/" component={ Home } />
+        <Route path="/shoppingcart" component={ ShoppingCart } />
+      </Switch>
     </BrowserRouter>
   );
 }
