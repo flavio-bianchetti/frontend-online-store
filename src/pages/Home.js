@@ -1,4 +1,5 @@
 import React from 'react';
+import FilterBar from '../component/FilterBar';
 
 class Home extends React.Component {
   render() {
@@ -16,6 +17,9 @@ class Home extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        <div>
+          <FilterBar />
+        </div>
       </div>
     );
   }
