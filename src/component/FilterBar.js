@@ -8,6 +8,10 @@ class FilterBar extends React.Component {
       categories: [],
     };
   }
+  
+  componentDidMount = () => {
+    this.renderCategories();
+  }
 
   async renderCategories() {
     const categories = await getCategories();
@@ -20,11 +24,7 @@ class FilterBar extends React.Component {
       categories: categoryElements,
     });
   }
-
-  componentDidMount = () => {
-    this.renderCategories();
-  }
-
+  
   render() {
     const { categories } = this.state;
     return (
