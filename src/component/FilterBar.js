@@ -23,9 +23,19 @@ class FilterBar extends React.Component {
   async renderCategories() {
     const categories = await getCategories();
     const categoryElements = categories.map((element) => (
-      <option data-testid="category" key={ element.id } value={ element.id }>
-        {element.name}
-      </option>
+      <div key={ element.id }>
+        <label htmlFor={ element.id }>
+          <input
+            type="radio"
+            data-testid="category"
+            id={ element.id }
+            value={ element.id }
+            name="category"
+            onChange={ this.handleChangeFilterBar }
+          />
+          { element.name }
+        </label>
+      </div>
     ));
     this.setState({
       categories: categoryElements,
@@ -33,20 +43,13 @@ class FilterBar extends React.Component {
   }
 
   render() {
-    const { category } = this.props;
+    // const { category } = this.props;
     const { categories } = this.state;
     return (
       <aside>
         <label htmlFor="category-input">
           Categorias
-          <select
-            name="category"
-            id="category-select"
-            value={ category }
-            onChange={ this.handleChangeFilterBar }
-          >
-            {categories}
-          </select>
+          {categories}
         </label>
       </aside>
     );
