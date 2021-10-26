@@ -34,12 +34,17 @@ class Home extends React.Component {
   renderProductList = () => {
     const { products } = this.state;
     return products.map((product) => (
-      <CardProduct
+      <Link
+        to={ `/productdetails/${product.id}/${product.category_id}` }
         key={ product.id }
-        title={ product.title }
-        price={ product.price }
-        thumbnail={ product.thumbnail }
-      />
+      >
+        <CardProduct
+          key={ product.id }
+          title={ product.title }
+          price={ product.price }
+          thumbnail={ product.thumbnail }
+        />
+      </Link>
     ));
   }
 
