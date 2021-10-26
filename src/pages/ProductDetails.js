@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class ProductDetails extends React.Component {
@@ -54,5 +55,14 @@ class ProductDetails extends React.Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+      categoryId: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default ProductDetails;
