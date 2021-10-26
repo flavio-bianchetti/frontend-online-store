@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CardProduct from '../component/CardProduct';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
+// import { getCart } from '../services/localStorage';
 
 class Home extends React.Component {
   constructor() {
@@ -10,10 +11,24 @@ class Home extends React.Component {
 
     this.state = {
       products: [],
+      cartProducts: [],
       query: '',
       category: '',
     };
   }
+
+  componentDidMount() {
+    this.getCart();
+  }
+
+  getCart = () => {
+    const cartProducts = JSON.parse(localStorage.getItem('cart'));
+    if (cartProducts) {
+      this.setState({
+        cartProducts,
+      });
+    }
+  };
 
   getProductsFromApi = async () => {
     const { query, category } = this.state;
@@ -31,20 +46,37 @@ class Home extends React.Component {
     this.setState({ [name]: value });
   }
 
+  handleAddCartButtonClick = ({ target }) => {
+    const productId = target.name;
+    const { products } = this.state;
+
+    const product = products.find((prod) => prod.id === productId);
+    console.log(product);
+
+    this.setState((prevState) => ({
+      cartProducts: [...prevState.cartProducts, product],
+    }), () => {
+      const { cartProducts } = this.state;
+      localStorage.setItem('cart', JSON.stringify(cartProducts));
+    });
+  }
+
   renderProductList = () => {
     const { products } = this.state;
     return products.map((product) => (
       <CardProduct
         key={ product.id }
+        id={ product.id }
         title={ product.title }
         price={ product.price }
         thumbnail={ product.thumbnail }
+        handleClick={ this.handleAddCartButtonClick }
       />
     ));
   }
 
   render() {
-    const { products, category } = this.state;
+    const { products, category, cartProducts } = this.state;
     return (
       <div>
         <h1>Home</h1>
@@ -81,7 +113,10 @@ class Home extends React.Component {
           />
         </div>
         { products.length > 0 && this.renderProductList() }
-        <Link to="/shoppingcart" data-testid="shopping-cart-button">
+        <Link
+          to={ { pathname: '/shoppingcart', state: { cartProducts } } }
+          data-testid="shopping-cart-button"
+        >
           <button type="button">Carrinho</button>
         </Link>
       </div>
