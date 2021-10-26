@@ -37,6 +37,7 @@ class Home extends React.Component {
       <Link
         to={ `/productdetails/${product.id}/${product.category_id}` }
         key={ product.id }
+        data-testid="product-detail-link"
       >
         <CardProduct
           key={ product.id }

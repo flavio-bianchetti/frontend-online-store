@@ -16,36 +16,39 @@ class ProductDetails extends React.Component {
 
   getProductDetails = async () => {
     const query = '';
-    const { match: { params: { id, category_id } } } = this.props;
-    const getCategories = await getProductsFromCategoryAndQuery(category_id, query);
+    const { match: { params: { id, categoryId } } } = this.props;
+    const getCategories = await getProductsFromCategoryAndQuery(categoryId, query);
     const product = getCategories.results.find((item) => item.id === id);
     this.setState({ product });
   }
 
   renderProductDetails = () => {
     const { product } = this.state;
-    console.log(product);
     const { title, price, thumbnail } = product;
     return (
       <div>
-        <h3>{title}</h3>
-        <p>
-          R$
-          {' '}
-          {price}
-        </p>
-        <img src={ thumbnail } alt="" />
+        <div>
+          <h3 data-testid="product-detail-name">{title}</h3>
+          <p>
+            R$
+            {' '}
+            {price}
+          </p>
+          <img src={ thumbnail } alt="" />
+        </div>
+        <div>
+          <h3>Detalhes do produto</h3>
+        </div>
       </div>
     );
   }
 
   render() {
-    const { match: { params: { id, category_id } } } = this.props;
     return (
       <div>
         <h1>
           ProductDetails
-          {this.renderProductDetails()}
+          { this.renderProductDetails() }
         </h1>
       </div>
     );
