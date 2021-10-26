@@ -15,12 +15,16 @@ class Home extends React.Component {
     };
   }
 
-  getProductsFromApi = async (event) => {
-    event.preventDefault();
+  getProductsFromApi = async () => {
     const { query, category } = this.state;
     const list = await getProductsFromCategoryAndQuery(category, query);
     this.setState({ products: list.results });
   };
+
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    await this.getProductsFromApi();
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,7 +50,7 @@ class Home extends React.Component {
         <h1>Home</h1>
         <form
           onChange={ this.handleChange }
-          onSubmit={ this.getProductsFromApi }
+          onSubmit={ this.handleSubmit }
         >
           <input
             data-testid="query-input"
@@ -70,7 +74,11 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <div>
-          <FilterBar category={ category } handleChange={ this.handleChange } />
+          <FilterBar
+            category={ category }
+            handleChange={ this.handleChange }
+            getProductsFromApi={ this.getProductsFromApi }
+          />
         </div>
         { products.length > 0 && this.renderProductList() }
         <Link to="/shoppingcart" data-testid="shopping-cart-button">

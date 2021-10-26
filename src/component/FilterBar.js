@@ -14,6 +14,12 @@ class FilterBar extends React.Component {
     this.renderCategories();
   }
 
+  handleChangeFilterBar = async (event) => {
+    const { handleChange, getProductsFromApi } = this.props;
+    await handleChange(event);
+    await getProductsFromApi();
+  }
+
   async renderCategories() {
     const categories = await getCategories();
     const categoryElements = categories.map((element) => (
@@ -27,7 +33,7 @@ class FilterBar extends React.Component {
   }
 
   render() {
-    const { category, handleChange } = this.props;
+    const { category } = this.props;
     const { categories } = this.state;
     return (
       <aside>
@@ -37,7 +43,7 @@ class FilterBar extends React.Component {
             name="category"
             id="category-select"
             value={ category }
-            onChange={ handleChange }
+            onChange={ this.handleChangeFilterBar }
           >
             {categories}
           </select>
@@ -50,6 +56,7 @@ class FilterBar extends React.Component {
 FilterBar.propTypes = {
   category: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  getProductsFromApi: PropTypes.func.isRequired,
 };
 
 export default FilterBar;
