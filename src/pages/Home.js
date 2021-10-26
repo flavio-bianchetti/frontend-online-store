@@ -40,7 +40,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, category } = this.state;
     return (
       <div>
         <h1>Home</h1>
@@ -70,7 +70,7 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <div>
-          <FilterBar />
+          <FilterBar category={ category } handleChange={ this.handleChange } />
         </div>
         { products.length > 0 && this.renderProductList() }
         <Link to="/shoppingcart" data-testid="shopping-cart-button">

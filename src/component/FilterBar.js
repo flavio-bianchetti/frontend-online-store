@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 
 class FilterBar extends React.Component {
@@ -16,9 +17,9 @@ class FilterBar extends React.Component {
   async renderCategories() {
     const categories = await getCategories();
     const categoryElements = categories.map((element) => (
-      <li data-testid="category" key={ element.id } id={ element.id }>
+      <option data-testid="category" key={ element.id } value={ element.id }>
         {element.name}
-      </li>
+      </option>
     ));
     this.setState({
       categories: categoryElements,
@@ -26,16 +27,29 @@ class FilterBar extends React.Component {
   }
 
   render() {
+    const { category, handleChange } = this.props;
     const { categories } = this.state;
     return (
       <aside>
-        <h2>Categorias</h2>
-        <ul>
-          {categories}
-        </ul>
+        <label htmlFor="category-input">
+          Categorias
+          <select
+            name="category"
+            id="category-select"
+            value={ category }
+            onChange={ handleChange }
+          >
+            {categories}
+          </select>
+        </label>
       </aside>
     );
   }
 }
+
+FilterBar.propTypes = {
+  category: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default FilterBar;
