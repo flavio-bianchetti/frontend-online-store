@@ -43,7 +43,6 @@ class FilterBar extends React.Component {
   }
 
   render() {
-    // const { category } = this.props;
     const { categories } = this.state;
     return (
       <aside>
@@ -57,7 +56,6 @@ class FilterBar extends React.Component {
 }
 
 FilterBar.propTypes = {
-  category: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   getProductsFromApi: PropTypes.func.isRequired,
 };
