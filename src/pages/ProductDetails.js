@@ -83,7 +83,8 @@ class ProductDetails extends React.Component {
         <div>
           <h3>Detalhes do produto</h3>
         </div>
-        <form>Avaliações
+        <form>
+          Avaliações
           <div>
             <label htmlFor="email-avaliator">
               <input
@@ -91,21 +92,23 @@ class ProductDetails extends React.Component {
                 placeholder="email"
               />
             </label>
-            <input type="checkbox"/>
-            <input type="checkbox"/>
-            <input type="checkbox"/>
-            <input type="checkbox"/>
-            <input type="checkbox"/>
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
           </div>
           <div>
-            <label>
-              <textarea data-testid="product-detail-evaluation"
+            <label htmlFor="message">
+              <textarea
+                id="message"
+                data-testid="product-detail-evaluation"
                 placeholder="Mensagem (opcional)"
               />
             </label>
           </div>
           <div>
-            <button>Avaliar</button>
+            <button type="submit">Avaliar</button>
           </div>
         </form>
       </div>
