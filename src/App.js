@@ -17,7 +17,7 @@ function App() {
           path="/productdetails/:id/:categoryId"
           render={ (props) => <ProductDetails { ...props } /> }
         />
-        <Route path="/confirmorder" component={ ConfirmOrder }/>
+        <Route path="/confirmorder" component={ ConfirmOrder } />
       </Switch>
     </BrowserRouter>
   );
