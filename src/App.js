@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
 import ProductDetails from './pages/ProductDetails';
+import ConfirmOrder from './pages/ConfirmOrder';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           path="/productdetails/:id/:categoryId"
           render={ (props) => <ProductDetails { ...props } /> }
         />
+        <Route path="/confirmorder" component={ ConfirmOrder }/>
       </Switch>
     </BrowserRouter>
   );
