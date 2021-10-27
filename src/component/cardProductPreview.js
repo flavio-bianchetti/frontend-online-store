@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import FreeShipping from './FreeShipping';
 
 class CardProductPreview extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class CardProductPreview extends React.Component {
       price,
       id,
       categoryId,
+      isFreeShipping,
       handleClick,
     } = this.props;
     return (
@@ -33,6 +35,10 @@ class CardProductPreview extends React.Component {
         <div className="card-action">
           <p>{ price }</p>
         </div>
+
+        <div>
+          { isFreeShipping && <FreeShipping /> }
+        </div>
         <div>
           <button
             type="button"
@@ -53,6 +59,7 @@ CardProductPreview.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
+  isFreeShipping: PropTypes.bool.isRequired,
   categoryId: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
