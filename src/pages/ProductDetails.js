@@ -38,6 +38,12 @@ class ProductDetails extends React.Component {
     this.setState({ product });
   }
 
+  handleCartQuantity = () => {
+    const { quantityProducts } = this.state;
+    const sumQuantity = quantityProducts.reduce((acc, curr) => acc + curr, 0);
+    return sumQuantity;
+  }
+
   handleAddCartButtonClick = () => {
     const { product } = this.state;
 
@@ -82,6 +88,12 @@ class ProductDetails extends React.Component {
             type="button"
           >
             Carrinho
+            <span
+              data-testid="shopping-cart-size"
+            >
+              {` - ${this.handleCartQuantity()}`}
+
+            </span>
 
           </button>
         </Link>
