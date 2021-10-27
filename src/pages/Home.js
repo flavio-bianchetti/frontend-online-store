@@ -68,6 +68,7 @@ class Home extends React.Component {
         title={ product.title }
         price={ product.price }
         thumbnail={ product.thumbnail }
+        categoryId={ product.category_id }
         handleClick={ this.handleAddCartButtonClick }
       />
     ));

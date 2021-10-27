@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class CardProductPreview extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class CardProductPreview extends React.Component {
       title,
       price,
       id,
+      categoryId,
       handleClick,
     } = this.props;
     return (
@@ -15,9 +17,16 @@ class CardProductPreview extends React.Component {
         className="card"
         data-testid="product"
       >
-        <div className="card-image">
-          <img src={ thumbnail } alt={ title } />
-        </div>
+        <Link
+          to={ `/productdetails/${id}/${categoryId}` }
+          key={ id }
+          data-testid="product-detail-link"
+        >
+          <div className="card-image">
+            <img src={ thumbnail } alt={ title } />
+          </div>
+        </Link>
+
         <div className="card-content">
           <p>{ title }</p>
         </div>
@@ -44,6 +53,7 @@ CardProductPreview.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
 
