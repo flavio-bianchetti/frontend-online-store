@@ -5,6 +5,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
 import CardProductPreview from '../component/cardProductPreview';
+import '../Home.css';
 
 class Home extends React.Component {
   constructor() {
@@ -94,13 +95,21 @@ class Home extends React.Component {
       <div>
         <h1>Home</h1>
         <div>
-          <FontAwesomeIcon icon={ faShoppingCart } />
-          <span
-            data-testid="shopping-cart-size"
+          <Link
+            className="shopping-cart"
+            to={ { pathname: '/shoppingcart', state: { cartProducts } } }
+            data-testid="shopping-cart-button"
           >
-            {` - ${this.handleCartQuantity()}`}
+            <FontAwesomeIcon icon={ faShoppingCart } />
+            <span
+              className="cart-quantity"
+              data-testid="shopping-cart-size"
+            >
+              {this.handleCartQuantity()}
 
-          </span>
+            </span>
+
+          </Link>
         </div>
 
         <form
@@ -136,20 +145,6 @@ class Home extends React.Component {
           />
         </div>
         { products.length > 0 && this.renderProductList() }
-        <Link
-          to={ { pathname: '/shoppingcart', state: { cartProducts } } }
-          data-testid="shopping-cart-button"
-        >
-          <button type="button">
-            Carrinho
-            <span
-              data-testid="shopping-cart-size"
-            >
-              {` - ${this.handleCartQuantity()}`}
-
-            </span>
-          </button>
-        </Link>
       </div>
     );
   }
