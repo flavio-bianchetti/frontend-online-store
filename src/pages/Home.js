@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
 import CardProductPreview from '../component/cardProductPreview';
@@ -90,6 +92,16 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Home</h1>
+        <div>
+          <FontAwesomeIcon icon={ faShoppingCart } />
+          <span
+            data-testid="shopping-cart-size"
+          >
+            {` - ${this.handleCartQuantity()}`}
+
+          </span>
+        </div>
+
         <form
           onChange={ this.handleChange }
           onSubmit={ this.handleSubmit }
