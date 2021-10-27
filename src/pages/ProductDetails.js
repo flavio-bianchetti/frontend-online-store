@@ -10,6 +10,7 @@ class ProductDetails extends React.Component {
     this.state = {
       product: {},
       cartProducts: [],
+      quantityProducts: [],
     };
   }
 
@@ -20,9 +21,11 @@ class ProductDetails extends React.Component {
 
   getCart = () => {
     const cartProducts = JSON.parse(localStorage.getItem('cart'));
+    const quantityProducts = JSON.parse(localStorage.getItem('quantity'));
     if (cartProducts) {
       this.setState({
         cartProducts,
+        quantityProducts,
       });
     }
   };
@@ -35,14 +38,22 @@ class ProductDetails extends React.Component {
     this.setState({ product });
   }
 
+  handleCartQuantity = () => {
+    const { quantityProducts } = this.state;
+    const sumQuantity = quantityProducts.reduce((acc, curr) => acc + curr, 0);
+    return sumQuantity;
+  }
+
   handleAddCartButtonClick = () => {
     const { product } = this.state;
 
     this.setState((prevState) => ({
       cartProducts: [...prevState.cartProducts, product],
+      quantityProducts: [...prevState.quantityProducts, 1],
     }), () => {
-      const { cartProducts } = this.state;
+      const { cartProducts, quantityProducts } = this.state;
       localStorage.setItem('cart', JSON.stringify(cartProducts));
+      localStorage.setItem('quantity', JSON.stringify(quantityProducts));
     });
   }
 
@@ -77,12 +88,46 @@ class ProductDetails extends React.Component {
             type="button"
           >
             Carrinho
+            <span
+              data-testid="shopping-cart-size"
+            >
+              {` - ${this.handleCartQuantity()}`}
+
+            </span>
 
           </button>
         </Link>
         <div>
           <h3>Detalhes do produto</h3>
         </div>
+        <form>
+          Avaliações
+          <div>
+            <label htmlFor="email-avaliator">
+              <input
+                type="email"
+                placeholder="email"
+              />
+            </label>
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+          </div>
+          <div>
+            <label htmlFor="message">
+              <textarea
+                id="message"
+                data-testid="product-detail-evaluation"
+                placeholder="Mensagem (opcional)"
+              />
+            </label>
+          </div>
+          <div>
+            <button type="submit">Avaliar</button>
+          </div>
+        </form>
       </div>
     );
   }

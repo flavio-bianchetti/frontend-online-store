@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CartProduct from '../component/CartProduct';
 
 class ShoppingCart extends Component {
@@ -56,6 +57,7 @@ class ShoppingCart extends Component {
         thumbnail={ product.thumbnail }
         quantity={ quantityProducts[index] }
         onClick={ this.handleClick }
+        availableQuantity={ product.available_quantity }
       />
     ));
   };
@@ -66,6 +68,14 @@ class ShoppingCart extends Component {
         <h1>Carrinho de compras</h1>
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
         { this.renderProductList() }
+        <div>
+          <Link
+            to="/confirmorder"
+            data-testid="checkout-products"
+          >
+            Finalizar compra
+          </Link>
+        </div>
       </div>
     );
   }

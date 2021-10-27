@@ -64,6 +64,12 @@ class Home extends React.Component {
     });
   }
 
+  handleCartQuantity = () => {
+    const { quantityProducts } = this.state;
+    const sumQuantity = quantityProducts.reduce((acc, curr) => acc + curr, 0);
+    return sumQuantity;
+  }
+
   renderProductList = () => {
     const { products } = this.state;
     return products.map((product) => (
@@ -122,7 +128,15 @@ class Home extends React.Component {
           to={ { pathname: '/shoppingcart', state: { cartProducts } } }
           data-testid="shopping-cart-button"
         >
-          <button type="button">Carrinho</button>
+          <button type="button">
+            Carrinho
+            <span
+              data-testid="shopping-cart-size"
+            >
+              {` - ${this.handleCartQuantity()}`}
+
+            </span>
+          </button>
         </Link>
       </div>
     );
