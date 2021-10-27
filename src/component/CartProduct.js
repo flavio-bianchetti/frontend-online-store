@@ -10,6 +10,7 @@ class CartProduct extends React.Component {
       price,
       quantity,
       onClick,
+      availableQuantity,
     } = this.props;
     return (
       <div
@@ -44,6 +45,7 @@ class CartProduct extends React.Component {
             data-testid="product-increase-quantity"
             type="button"
             name={ `${id}-${quantity}` }
+            disabled={ availableQuantity <= quantity }
             onClick={ onClick }
           >
             +
@@ -61,6 +63,7 @@ CartProduct.propTypes = {
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
 };
 
 export default CartProduct;
