@@ -32,7 +32,7 @@ class ShoppingCart extends Component {
         thumbnail={ product.thumbnail }
       />
     ));
-  }
+  };
 
   render() {
     return (
