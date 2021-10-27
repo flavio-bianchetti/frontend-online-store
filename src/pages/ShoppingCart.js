@@ -57,6 +57,7 @@ class ShoppingCart extends Component {
         thumbnail={ product.thumbnail }
         quantity={ quantityProducts[index] }
         onClick={ this.handleClick }
+        availableQuantity={ product.available_quantity }
       />
     ));
   };
