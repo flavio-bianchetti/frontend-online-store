@@ -11,6 +11,7 @@ class Home extends React.Component {
     this.state = {
       products: [],
       cartProducts: [],
+      quantityProducts: [],
       query: '',
       category: '',
     };
@@ -22,9 +23,11 @@ class Home extends React.Component {
 
   getCart = () => {
     const cartProducts = JSON.parse(localStorage.getItem('cart'));
+    const quantityProducts = JSON.parse(localStorage.getItem('quantity'));
     if (cartProducts) {
       this.setState({
         cartProducts,
+        quantityProducts,
       });
     }
   };
@@ -53,9 +56,11 @@ class Home extends React.Component {
 
     this.setState((prevState) => ({
       cartProducts: [...prevState.cartProducts, product],
+      quantityProducts: [...prevState.quantityProducts, 1],
     }), () => {
-      const { cartProducts } = this.state;
+      const { cartProducts, quantityProducts } = this.state;
       localStorage.setItem('cart', JSON.stringify(cartProducts));
+      localStorage.setItem('quantity', JSON.stringify(quantityProducts));
     });
   }
 
