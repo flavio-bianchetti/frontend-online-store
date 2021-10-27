@@ -15,7 +15,6 @@ class ShoppingCart extends Component {
 
   getCart = async () => {
     const productList = JSON.parse(localStorage.getItem('cart'));
-    console.log(productList);
     if (productList) {
       this.setState({
         productList,

@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class CardProduct extends React.Component {
+class CardProductPreview extends React.Component {
   render() {
     const {
       thumbnail,
       title,
       price,
+      id,
+      handleClick,
     } = this.props;
     return (
       <div
@@ -22,15 +24,27 @@ class CardProduct extends React.Component {
         <div className="card-action">
           <p>{ price }</p>
         </div>
+        <div>
+          <button
+            type="button"
+            data-testid="product-add-to-cart"
+            name={ id }
+            onClick={ handleClick }
+          >
+            Adicionar ao Carinho
+          </button>
+        </div>
       </div>
     );
   }
 }
 
-CardProduct.propTypes = {
+CardProductPreview.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
-export default CardProduct;
+export default CardProductPreview;

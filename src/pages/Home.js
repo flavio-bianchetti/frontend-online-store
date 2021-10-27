@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CardProduct from '../component/CardProduct';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
-// import { getCart } from '../services/localStorage';
+import CardProductPreview from '../component/cardProductPreview';
 
 class Home extends React.Component {
   constructor() {
@@ -51,7 +50,6 @@ class Home extends React.Component {
     const { products } = this.state;
 
     const product = products.find((prod) => prod.id === productId);
-    console.log(product);
 
     this.setState((prevState) => ({
       cartProducts: [...prevState.cartProducts, product],
@@ -64,7 +62,7 @@ class Home extends React.Component {
   renderProductList = () => {
     const { products } = this.state;
     return products.map((product) => (
-      <CardProduct
+      <CardProductPreview
         key={ product.id }
         id={ product.id }
         title={ product.title }
