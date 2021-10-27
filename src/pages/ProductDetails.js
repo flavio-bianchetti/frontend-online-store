@@ -37,7 +37,6 @@ class ProductDetails extends React.Component {
 
   handleAddCartButtonClick = () => {
     const { product } = this.state;
-    console.log(product);
 
     this.setState((prevState) => ({
       cartProducts: [...prevState.cartProducts, product],
