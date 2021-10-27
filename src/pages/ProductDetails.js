@@ -83,6 +83,31 @@ class ProductDetails extends React.Component {
         <div>
           <h3>Detalhes do produto</h3>
         </div>
+        <form>Avaliações
+          <div>
+            <label htmlFor="email-avaliator">
+              <input
+                type="email"
+                placeholder="email"
+              />
+            </label>
+            <input type="checkbox"/>
+            <input type="checkbox"/>
+            <input type="checkbox"/>
+            <input type="checkbox"/>
+            <input type="checkbox"/>
+          </div>
+          <div>
+            <label>
+              <textarea data-testid="product-detail-evaluation"
+                placeholder="Mensagem (opcional)"
+              />
+            </label>
+          </div>
+          <div>
+            <button>Avaliar</button>
+          </div>
+        </form>
       </div>
     );
   }
