@@ -44,3 +44,16 @@ a {
 .navbar-search, button {
   margin-left: 10px;
 }
+
+.banner-section {
+  margin: 10px auto;
+}
+
+.banner-home {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+  
+}

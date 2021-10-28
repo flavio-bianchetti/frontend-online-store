@@ -6,6 +6,8 @@ import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
 import CardProductPreview from '../component/cardProductPreview';
 import '../Home.css';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends React.Component {
   constructor() {
@@ -88,13 +90,11 @@ class Home extends React.Component {
       />
     ));
   }
-
   render() {
     const { products, category, cartProducts } = this.state;
     return (
       <div>
         <h1>Home</h1>
-
         <section className="navbar">
           <div className="navbar-select">
             <FilterBar
@@ -141,6 +141,29 @@ class Home extends React.Component {
             </Link>
           </div>
         </section>
+        {
+          category === ''
+          && (
+              <section className="banner-section">
+                <Carousel>
+                  <Carousel.Item interval={3000}>
+                    <img
+                      className="d-block banner-home"
+                      src={require('../images/banner1.jpg')}
+                      alt="banner1.jpg"
+                    />
+                  </Carousel.Item>
+                  <Carousel.Item interval={3000}>
+                    <img
+                      className="d-block banner-home"
+                      src={require('../images/banner2.jpg')}
+                      alt="banner2.jpg"
+                    />
+                  </Carousel.Item>
+                </Carousel>
+              </section>
+          )
+        }
         <div />
         <p
           data-testid="home-initial-message"
