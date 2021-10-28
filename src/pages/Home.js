@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import Carousel from 'react-bootstrap/Carousel';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
 import CardProductPreview from '../component/cardProductPreview';
 import '../Home.css';
-import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import banner1 from '../images/banner1.jpg';
+import banner2 from '../images/banner2.jpg';
 
 class Home extends React.Component {
   constructor() {
@@ -90,6 +92,7 @@ class Home extends React.Component {
       />
     ));
   }
+
   render() {
     const { products, category, cartProducts } = this.state;
     return (
@@ -144,24 +147,24 @@ class Home extends React.Component {
         {
           category === ''
           && (
-              <section className="banner-section">
-                <Carousel>
-                  <Carousel.Item interval={3000}>
-                    <img
-                      className="d-block banner-home"
-                      src={require('../images/banner1.jpg')}
-                      alt="banner1.jpg"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item interval={3000}>
-                    <img
-                      className="d-block banner-home"
-                      src={require('../images/banner2.jpg')}
-                      alt="banner2.jpg"
-                    />
-                  </Carousel.Item>
-                </Carousel>
-              </section>
+            <section className="banner-section">
+              <Carousel>
+                <Carousel.Item interval={ 3000 }>
+                  <img
+                    className="d-block banner-home"
+                    src={ banner1 }
+                    alt="banner1.jpg"
+                  />
+                </Carousel.Item>
+                <Carousel.Item interval={ 3000 }>
+                  <img
+                    className="d-block banner-home"
+                    src={ banner2 }
+                    alt="banner2.jpg"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </section>
           )
         }
         <div />
