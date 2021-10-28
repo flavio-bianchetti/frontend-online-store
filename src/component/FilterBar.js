@@ -24,28 +24,8 @@ class FilterBar extends React.Component {
   async renderCategories() {
     const categories = await getCategories();
     console.log(categories);
-    // const categoryElements = () => {
-    //   <SelectCategory categories={ categories } />
-    // };
-
-    // const categoryElements = categories.map((element) => (
-    //   <div key={ element.id }>
-    //     <label htmlFor={ element.id }>
-    //       <input
-    //         type="radio"
-    //         data-testid="category"
-    //         id={ element.id }
-    //         value={ element.id }
-    //         name="category"
-    //         onChange={ this.handleChangeFilterBar }
-    //       />
-    //       { element.name }
-    //     </label>
-    //   </div>
-    // ));
     this.setState({
       categories,
-      // : categoryElements,
     });
   }
 
@@ -55,14 +35,10 @@ class FilterBar extends React.Component {
     } = this.state;
     return (
       <aside>
-        {/* <label htmlFor="category-input">
-          Categorias */}
-          {/* {categories} */}
-          <SelectCategory
-            categories={ categories }
-            onChange={ this.handleChangeFilterBar }  
-          />
-        {/* </label> */}
+        <SelectCategory
+          categories={ categories }
+          onChange={ this.handleChangeFilterBar }
+        />
       </aside>
     );
   }

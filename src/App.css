@@ -40,15 +40,3 @@
     transform: rotate(360deg);
   }
 }
-
-.navbar {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  padding: 5px;
-  border: 1px solid black;
-}
-
-.navbar-search, button {
-  margin-left: 10px;
-}

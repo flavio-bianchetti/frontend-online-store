@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
 import CardProductPreview from '../component/cardProductPreview';
+import '../Home.css';
 
 class Home extends React.Component {
   constructor() {
@@ -101,42 +104,43 @@ class Home extends React.Component {
             />
           </div>
           <div className="navbar-search">
-          <form
-          onChange={ this.handleChange }
-          onSubmit={ this.handleSubmit }
-        >
-          <input
-            data-testid="query-input"
-            type="text"
-            name="query"
-            id="query-input"
-            placeholder="Search"
-          />
-          <button
-            data-testid="query-button"
-            type="submit"
-          >
-            busca
-          </button>
-        </form>
+            <form
+              onChange={ this.handleChange }
+              onSubmit={ this.handleSubmit }
+            >
+              <input
+                data-testid="query-input"
+                type="text"
+                name="query"
+                id="query-input"
+                placeholder="Search"
+              />
+              <button
+                data-testid="query-button"
+                type="submit"
+              >
+                busca
+              </button>
+            </form>
           </div>
           <div className="navbar-cart">
             <Link
+              className="shopping-cart-icon"
               to={ { pathname: '/shoppingcart', state: { cartProducts } } }
               data-testid="shopping-cart-button"
             >
-              <button type="button">
-                Carrinho
-                <span
-                  data-testid="shopping-cart-size"
-                >
-                  {` - ${this.handleCartQuantity()}`}
-                </span>
-              </button>
+              <FontAwesomeIcon icon={ faShoppingCart } />
+              <span
+                className="cart-quantity"
+                data-testid="shopping-cart-size"
+              >
+                {this.handleCartQuantity()}
+
+              </span>
+
             </Link>
           </div>
         </section>
-        
         <div />
         <p
           data-testid="home-initial-message"
@@ -144,7 +148,6 @@ class Home extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         { products.length > 0 && this.renderProductList() }
-        
       </div>
     );
   }

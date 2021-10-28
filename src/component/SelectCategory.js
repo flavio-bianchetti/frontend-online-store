@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SelectCategory extends React.Component {
   render() {
@@ -32,5 +33,10 @@ class SelectCategory extends React.Component {
     );
   }
 }
+
+SelectCategory.propTypes = {
+  categories: PropTypes.objectOf(PropTypes.any).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default SelectCategory;
