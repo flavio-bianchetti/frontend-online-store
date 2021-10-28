@@ -91,7 +91,17 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Home</h1>
-        <form
+
+        <section className="navbar">
+          <div className="navbar-select">
+            <FilterBar
+              category={ category }
+              handleChange={ this.handleChange }
+              getProductsFromApi={ this.getProductsFromApi }
+            />
+          </div>
+          <div className="navbar-search">
+          <form
           onChange={ this.handleChange }
           onSubmit={ this.handleSubmit }
         >
@@ -109,35 +119,32 @@ class Home extends React.Component {
             busca
           </button>
         </form>
+          </div>
+          <div className="navbar-cart">
+            <Link
+              to={ { pathname: '/shoppingcart', state: { cartProducts } } }
+              data-testid="shopping-cart-button"
+            >
+              <button type="button">
+                Carrinho
+                <span
+                  data-testid="shopping-cart-size"
+                >
+                  {` - ${this.handleCartQuantity()}`}
+                </span>
+              </button>
+            </Link>
+          </div>
+        </section>
+        
         <div />
-
         <p
           data-testid="home-initial-message"
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <div>
-          <FilterBar
-            category={ category }
-            handleChange={ this.handleChange }
-            getProductsFromApi={ this.getProductsFromApi }
-          />
-        </div>
         { products.length > 0 && this.renderProductList() }
-        <Link
-          to={ { pathname: '/shoppingcart', state: { cartProducts } } }
-          data-testid="shopping-cart-button"
-        >
-          <button type="button">
-            Carrinho
-            <span
-              data-testid="shopping-cart-size"
-            >
-              {` - ${this.handleCartQuantity()}`}
-
-            </span>
-          </button>
-        </Link>
+        
       </div>
     );
   }
