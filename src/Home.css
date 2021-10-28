@@ -1,0 +1,34 @@
+.cart-quantity {
+  background-color: rgb(113, 127, 224);
+  border-radius: 5px;
+  color: rgb(250, 250, 250);
+  font-size: 12px;
+  height: 15px;
+  left: -5px;
+  line-height: 15px;
+  min-width: 15px;
+  padding: 0 3px;
+  position: relative;
+  right: 0;
+  text-align: center;
+  top: -10px;
+  vertical-align: top;
+}
+
+.shopping-cart-icon {
+  color: rgb(102, 102, 102);
+  font-size: 20px;
+  padding: 0 5px;
+  vertical-align: top;
+}
+
+.shopping-cart-icon:hover {
+  color: rgb(113, 127, 224);
+  transition-delay: 0.2s;
+  transition-duration: 1.5s;
+  transition-property: color;
+}
+
+a {
+  text-decoration: none;
+}

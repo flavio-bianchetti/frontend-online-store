@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import FilterBar from '../component/FilterBar';
 import CardProductPreview from '../component/cardProductPreview';
+import '../Home.css';
 
 class Home extends React.Component {
   constructor() {
@@ -91,6 +94,24 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Home</h1>
+        <div>
+          <Link
+            className="shopping-cart-icon"
+            to={ { pathname: '/shoppingcart', state: { cartProducts } } }
+            data-testid="shopping-cart-button"
+          >
+            <FontAwesomeIcon icon={ faShoppingCart } />
+            <span
+              className="cart-quantity"
+              data-testid="shopping-cart-size"
+            >
+              {this.handleCartQuantity()}
+
+            </span>
+
+          </Link>
+        </div>
+
         <form
           onChange={ this.handleChange }
           onSubmit={ this.handleSubmit }
@@ -124,20 +145,6 @@ class Home extends React.Component {
           />
         </div>
         { products.length > 0 && this.renderProductList() }
-        <Link
-          to={ { pathname: '/shoppingcart', state: { cartProducts } } }
-          data-testid="shopping-cart-button"
-        >
-          <button type="button">
-            Carrinho
-            <span
-              data-testid="shopping-cart-size"
-            >
-              {` - ${this.handleCartQuantity()}`}
-
-            </span>
-          </button>
-        </Link>
       </div>
     );
   }
