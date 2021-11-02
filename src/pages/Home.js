@@ -116,7 +116,7 @@ class Home extends React.Component {
                 type="text"
                 name="query"
                 id="query-input"
-                placeholder="Search"
+                placeholder="digite algum termo de pesquisa"
               />
               <button
                 data-testid="query-button"
@@ -145,7 +145,7 @@ class Home extends React.Component {
           </div>
         </section>
         {
-          category === ''
+          (category === '' && products.length === 0)
           && (
             <section className="banner-section">
               <Carousel>
@@ -168,11 +168,6 @@ class Home extends React.Component {
           )
         }
         <div />
-        <p
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
         { products.length > 0 && this.renderProductList() }
       </div>
     );
