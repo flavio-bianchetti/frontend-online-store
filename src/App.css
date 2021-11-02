@@ -40,3 +40,35 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 10px;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.footer-left {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-left ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-middle {
+  display: flex;
+  flex: 1;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+.footer-right {
+  flex: 1;
+  text-align: center;
+}

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
 import ProductDetails from './pages/ProductDetails';
 import ConfirmOrder from './pages/ConfirmOrder';
+import Footer from './component/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         />
         <Route path="/confirmorder" component={ ConfirmOrder } />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
