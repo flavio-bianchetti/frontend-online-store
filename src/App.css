@@ -68,6 +68,10 @@
   text-align: center;
 }
 
+.footer-middle a {
+  text-decoration: none;
+}
+
 .footer-right {
   flex: 1;
   text-align: center;
